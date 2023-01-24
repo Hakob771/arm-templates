@@ -112,7 +112,7 @@
             "value": "azureuser"
         },
         "adminPassword": {
-            "value": null
+            "value": "Admin123123123"
         },
         "userData": {
             "value": "c3VkbyBhcHQgaW5zdGFsbCBuZ2lueCAteQ=="
