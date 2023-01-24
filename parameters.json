@@ -2,17 +2,14 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "prSoucrceBranchName": {
-            "value": "qa-env"
-        },
         "location": {
             "value": "eastus"
         },
         "networkInterfaceName": {
-            "value": "[join(parameters('prSoucrceBranchName'), '-vm816')]"
+            "value": "qa-env-vm816"
         },
         "networkSecurityGroupName": {
-            "value": "[join(parameters('prSoucrceBranchName'), '-vm-nsg')]"
+            "value": "qa-env-vm-nsg"
         },
         "networkSecurityGroupRules": {
             "value": [
@@ -61,7 +58,7 @@
             "value": "default"
         },
         "virtualNetworkName": {
-            "value": "[join(parameters('prSoucrceBranchName'), '-rg-vnet')]"
+            "value": "qa-env-rg-vnet"
         },
         "addressPrefixes": {
             "value": [
@@ -79,7 +76,7 @@
             ]
         },
         "publicIpAddressName": {
-            "value": "[join(parameters('prSoucrceBranchName'), '-vm-ip')]"
+            "value": "qa-env-vm-ip"
         },
         "publicIpAddressType": {
             "value": "Static"
@@ -91,13 +88,13 @@
             "value": "Delete"
         },
         "virtualMachineName": {
-            "value": "[join(parameters('prSoucrceBranchName'), '-vm')]"
+            "value": "qa-env-vm"
         },
         "virtualMachineComputerName": {
-            "value": "[join(parameters('prSoucrceBranchName'), '-vm')]"
+            "value": "qa-env-vm"
         },
         "virtualMachineRG": {
-            "value": "[join(parameters('prSoucrceBranchName'), '-rg')]"
+            "value": "qa-env-rg"
         },
         "osDiskType": {
             "value": "Premium_LRS"
@@ -115,7 +112,7 @@
             "value": "azureuser"
         },
         "adminPassword": {
-            "value": "Admin123123123"
+            "value": null
         },
         "userData": {
             "value": "c3VkbyBhcHQgaW5zdGFsbCBuZ2lueCAteQ=="
