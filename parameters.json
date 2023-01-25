@@ -5,8 +5,8 @@
         "location": {
             "value": "eastus"
         },
-        "networkInterfaceName": {
-            "value": "qa-env-vm816"
+        "networkInterfaceName1": {
+            "value": "qa-env-vm932_z1"
         },
         "networkSecurityGroupName": {
             "value": "qa-env-vm-nsg"
@@ -25,32 +25,6 @@
                         "destinationAddressPrefix": "*",
                         "destinationPortRange": "22"
                     }
-                },
-                {
-                    "name": "HTTPS",
-                    "properties": {
-                        "priority": 320,
-                        "protocol": "TCP",
-                        "access": "Allow",
-                        "direction": "Inbound",
-                        "sourceAddressPrefix": "*",
-                        "sourcePortRange": "*",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "443"
-                    }
-                },
-                {
-                    "name": "HTTP",
-                    "properties": {
-                        "priority": 340,
-                        "protocol": "TCP",
-                        "access": "Allow",
-                        "direction": "Inbound",
-                        "sourceAddressPrefix": "*",
-                        "sourcePortRange": "*",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "80"
-                    }
                 }
             ]
         },
@@ -62,7 +36,7 @@
         },
         "addressPrefixes": {
             "value": [
-                "10.0.0.0/16"
+                "10.1.0.0/16"
             ]
         },
         "subnets": {
@@ -70,12 +44,12 @@
                 {
                     "name": "default",
                     "properties": {
-                        "addressPrefix": "10.0.0.0/24"
+                        "addressPrefix": "10.1.0.0/24"
                     }
                 }
             ]
         },
-        "publicIpAddressName": {
+        "publicIpAddressName1": {
             "value": "qa-env-vm-ip"
         },
         "publicIpAddressType": {
@@ -90,7 +64,10 @@
         "virtualMachineName": {
             "value": "qa-env-vm"
         },
-        "virtualMachineComputerName": {
+        "virtualMachineName1": {
+            "value": "qa-env-vm"
+        },
+        "virtualMachineComputerName1": {
             "value": "qa-env-vm"
         },
         "virtualMachineRG": {
@@ -112,10 +89,13 @@
             "value": "azureuser"
         },
         "adminPassword": {
-            "value": null
+            "value": "Admin123123123"
         },
-        "userData": {
-            "value": "c3VkbyBhcHQgaW5zdGFsbCBuZ2lueCAteQ=="
+        "customData": {
+            "value": "IyEvYmluL2Jhc2gKc3VkbyBhcHQgdXBkYXRlCnN1ZG8gYXB0IGluc3RhbGwgbmdpbnggLXkK"
+        },
+        "zone": {
+            "value": "1"
         }
     }
 }

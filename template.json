@@ -1,11 +1,11 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
             "type": "string"
         },
-        "networkInterfaceName": {
+        "networkInterfaceName1": {
             "type": "string"
         },
         "networkSecurityGroupName": {
@@ -26,7 +26,7 @@
         "subnets": {
             "type": "array"
         },
-        "publicIpAddressName": {
+        "publicIpAddressName1": {
             "type": "string"
         },
         "publicIpAddressType": {
@@ -41,7 +41,10 @@
         "virtualMachineName": {
             "type": "string"
         },
-        "virtualMachineComputerName": {
+        "virtualMachineName1": {
+            "type": "string"
+        },
+        "virtualMachineComputerName1": {
             "type": "string"
         },
         "virtualMachineRG": {
@@ -65,7 +68,10 @@
         "adminPassword": {
             "type": "secureString"
         },
-        "userData": {
+        "customData": {
+            "type": "secureString"
+        },
+        "zone": {
             "type": "string"
         }
     },
@@ -77,14 +83,14 @@
     },
     "resources": [
         {
-            "name": "[parameters('networkInterfaceName')]",
+            "name": "[parameters('networkInterfaceName1')]",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2021-08-01",
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
                 "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
-                "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName'))]"
+                "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName1'))]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -96,7 +102,7 @@
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIpAddress": {
-                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]",
+                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName1'))]",
                                 "properties": {
                                     "deleteOption": "[parameters('pipDeleteOption')]"
                                 }
@@ -131,7 +137,7 @@
             }
         },
         {
-            "name": "[parameters('publicIpAddressName')]",
+            "name": "[parameters('publicIpAddressName1')]",
             "type": "Microsoft.Network/publicIpAddresses",
             "apiVersion": "2020-08-01",
             "location": "[parameters('location')]",
@@ -140,15 +146,18 @@
             },
             "sku": {
                 "name": "[parameters('publicIpAddressSku')]"
-            }
+            },
+            "zones": [
+                "1"
+            ]
         },
         {
-            "name": "[parameters('virtualMachineName')]",
+            "name": "[parameters('virtualMachineName1')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2022-03-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]"
+                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName1'))]"
             ],
             "properties": {
                 "hardwareProfile": {
@@ -173,7 +182,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]",
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName1'))]",
                             "properties": {
                                 "deleteOption": "[parameters('nicDeleteOption')]"
                             }
@@ -181,22 +190,25 @@
                     ]
                 },
                 "osProfile": {
-                    "computerName": "[parameters('virtualMachineComputerName')]",
+                    "computerName": "[parameters('virtualMachineComputerName1')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
                     "linuxConfiguration": {
                         "patchSettings": {
                             "patchMode": "ImageDefault"
                         }
-                    }
+                    },
+                    "customData": "[parameters('customData')]"
                 },
-                "userData": "[parameters('userData')]",
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": true
                     }
                 }
-            }
+            },
+            "zones": [
+                "1"
+            ]
         }
     ],
     "outputs": {
