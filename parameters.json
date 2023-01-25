@@ -6,7 +6,7 @@
             "value": "eastus"
         },
         "networkInterfaceName": {
-            "value": "qa-env-vm932_z1"
+            "value": "qa-env-vm347"
         },
         "networkSecurityGroupName": {
             "value": "qa-env-vm-nsg"
@@ -36,7 +36,7 @@
         },
         "addressPrefixes": {
             "value": [
-                "10.1.0.0/16"
+                "10.0.0.0/16"
             ]
         },
         "subnets": {
@@ -44,8 +44,8 @@
                 {
                     "name": "default",
                     "properties": {
-                        "addressPrefix": "10.1.0.0/24"
-                    }   
+                        "addressPrefix": "10.0.0.0/24"
+                    }
                 }
             ]
         },
@@ -62,9 +62,6 @@
             "value": "Delete"
         },
         "virtualMachineName": {
-            "value": "qa-env-vm"
-        },
-        "virtualMachineName1": {
             "value": "qa-env-vm"
         },
         "virtualMachineComputerName": {
@@ -93,9 +90,6 @@
         },
         "customData": {
             "value": "IyEvYmluL2Jhc2gKc3VkbyBhcHQgdXBkYXRlCnN1ZG8gYXB0IGluc3RhbGwgbmdpbnggLXkK"
-        },
-        "zone": {
-            "value": "1"
         }
     }
 }

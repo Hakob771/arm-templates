@@ -1,5 +1,5 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -41,9 +41,6 @@
         "virtualMachineName": {
             "type": "string"
         },
-        "virtualMachineName1": {
-            "type": "string"
-        },
         "virtualMachineComputerName": {
             "type": "string"
         },
@@ -70,9 +67,6 @@
         },
         "customData": {
             "type": "secureString"
-        },
-        "zone": {
-            "type": "string"
         }
     },
     "variables": {
@@ -102,7 +96,7 @@
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIpAddress": {
-                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName1'))]",
+                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]",
                                 "properties": {
                                     "deleteOption": "[parameters('pipDeleteOption')]"
                                 }
@@ -146,13 +140,10 @@
             },
             "sku": {
                 "name": "[parameters('publicIpAddressSku')]"
-            },
-            "zones": [
-                "1"
-            ]
+            }
         },
         {
-            "name": "[parameters('virtualMachineName1')]",
+            "name": "[parameters('virtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2022-03-01",
             "location": "[parameters('location')]",
@@ -205,10 +196,7 @@
                         "enabled": true
                     }
                 }
-            },
-            "zones": [
-                "1"
-            ]
+            }
         }
     ],
     "outputs": {
