@@ -45,7 +45,7 @@
                     "name": "default",
                     "properties": {
                         "addressPrefix": "10.1.0.0/24"
-                    }
+                    }   
                 }
             ]
         },
