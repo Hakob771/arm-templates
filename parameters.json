@@ -5,7 +5,7 @@
         "location": {
             "value": "eastus"
         },
-        "networkInterfaceName1": {
+        "networkInterfaceName": {
             "value": "qa-env-vm932_z1"
         },
         "networkSecurityGroupName": {
@@ -49,7 +49,7 @@
                 }
             ]
         },
-        "publicIpAddressName1": {
+        "publicIpAddressName": {
             "value": "qa-env-vm-ip"
         },
         "publicIpAddressType": {
@@ -67,7 +67,7 @@
         "virtualMachineName1": {
             "value": "qa-env-vm"
         },
-        "virtualMachineComputerName1": {
+        "virtualMachineComputerName": {
             "value": "qa-env-vm"
         },
         "virtualMachineRG": {
